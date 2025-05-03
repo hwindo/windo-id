@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= render "layouts/head" %>
+</head>
+<body class="<%= content_for?(:body_class) ? yield(:body_class) : '' %>">
+    <%= yield %>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "layouts/head" %>
+  </head>
+  <body class="bg-[#F9FAFB]">
+    <div class="grid content-center min-h-screen p-6">
+      <header class="w-full absolute top-0 left-0">
+        <div class="flex justify-end h-[80px] w-full items-center px-6">
+          <div>
+            <%= link_to "Close X", root_path, class: "cursor-pointer" %>
+          </div>
+        </div>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
+  </body>
+</html>

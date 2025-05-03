@@ -1,0 +1,25 @@
+<header>
+  <div class="flex justify-between h-[80px] items-center">
+    <%= render "layouts/logo" %>
+    <div>
+      <nav class="hidden sm:block">
+        <ul class="flex gap-5">
+          <li><%= link_to "H", root_path %></li>
+          <li>Works</li>
+          <li>Case Studies</li>
+          <li>Blog</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </div>
+    <div>
+      <%= if authenticated?
+        button_to "Log Out", session_path, method: :delete, class: "cursor-pointer"
+      end %>
+      <%= unless authenticated?
+        link_to "Log In", new_session_path, class: "cursor-pointer"
+      end %>
+    </div>
+  </div>
+</header>
