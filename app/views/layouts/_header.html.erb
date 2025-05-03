@@ -2,15 +2,19 @@
   <div class="flex justify-between h-[80px] items-center">
     <%= render "layouts/logo" %>
     <div>
-      <nav class="hidden sm:block">
-        <ul class="flex gap-5">
-          <li><%= link_to "H", root_path %></li>
+      <nav>
+        <ul class="hidden sm:flex gap-5">
           <li>Works</li>
           <li>Case Studies</li>
           <li>Blog</li>
-          <li>About</li>
-          <li>Contact</li>
         </ul>
+
+        <select name="nav" id="nav" class="sm:hidden cursor-pointer text-center">
+          <option value="">Select</option>
+          <option value="/">Works</option>
+          <option value="/case-studies">Case Studies</option>
+          <option value="/blog">Blog</option>
+        </select>
       </nav>
     </div>
     <div>
