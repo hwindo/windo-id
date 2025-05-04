@@ -6,8 +6,10 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Posts</h1>
-    <%= link_to "New post", new_post_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl">Blog</h1>
+    <% if authenticated? %>
+      <%= link_to "New post", new_post_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium"%>
+    <% end %>
   </div>
 
   <div id="posts" class="min-w-full divide-y divide-gray-200 space-y-5">
