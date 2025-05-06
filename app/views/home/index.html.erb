@@ -1,11 +1,16 @@
 <div>
-  <div class="min-h-[62vh] grid content-center">
-    <div class="w-7/8 md:w-5/8 mx-auto text-center flex flex-col gap-6">
-    <div>
-      <span class="border px-4 rounded-full py-1">Let's build this together</span>
+  <div class="min-h-[62vh] grid content-center [background-image:url('/assets/hero-bg.svg')] bg-no-repeat bg-cover bg-center">
+  <%= image_tag "hero-bg.svg", class: "w-full h-full object-cover absolute -top-10 left-0 opacity-32 pointer-events-none hero-bg-float" %>
+    <div class="relative w-screen h-full -left-6">
+      
+      <div class="w-7/8 md:w-5/8 mx-auto text-center flex flex-col gap-6">
+        <div>
+          <span class="border px-4 rounded-full py-1">Let's build this together</span>
+        </div>
+        <h1 class="font-lora font-bold text-[72px] leading-tight">Digital Product Builder</h1>
+        <p class="font-fira-sans">Embrace AI Era, let's build even more quality digital products.</p>
       </div>
-      <h1 class="font-lora font-bold text-[72px] leading-tight">Digital Product Builder</h1>
-      <p class="font-fira-sans">Embrace AI Era, let's build even more quality digital products.</p>
+
     </div>
   </div>
 </div>

@@ -1,0 +1,37 @@
+<div id="<%= dom_id post %>" class="w-full sm:w-3/4 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mb-4">
+  <% if post.featured_image.attached? %>
+    <div class="relative h-48 w-full overflow-hidden">
+      <%= image_tag post.featured_image.variant(resize_to_fill: [800, 400]), class: "w-full h-full object-cover" %>
+    </div>
+  <% end %>
+  
+  <div class="p-6">
+    <h2 class="text-2xl font-bold mb-2 text-gray-800 hover:text-blue-600 transition-colors duration-200">
+      <%= link_to post.title, post %>
+    </h2>
+    
+    <div class="flex items-center text-sm text-gray-500 mb-4">
+      <span class="mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        <%= post.user.email_address.split('@').first %>
+      </span>
+      
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <%= post.created_at.strftime("%B %d, %Y") %>
+      </span>
+    </div>
+    
+    <div class="text-gray-600 mb-4 line-clamp-3">
+      <%= post.content.to_plain_text.truncate(150) %>
+    </div>
+    
+    <div class="mt-4">
+      <%= link_to "Read more", post, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+    </div>
+  </div>
+</div>
