@@ -6,10 +6,16 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-      <%= link_to "Back to posts", posts_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-    <div>
-      <%= link_to "Edit this post", edit_post_path(@post), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-      <%= button_to "Destroy this post", @post, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+      <%= link_to posts_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium flex items-center gap-2" do %>
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+      <% end %>
+    <div class="flex items-center">
+      <%= link_to edit_post_path(@post), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-cyan-100 inline-block font-medium cursor-pointer" do %>
+        <i data-lucide="pencil" class="w-5 h-5"></i>
+      <% end %>
+      <%= button_to @post, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } do %>
+        <i data-lucide="trash-2" class="w-5 h-5"></i>
+      <% end %>
     </div>
   </div>
 

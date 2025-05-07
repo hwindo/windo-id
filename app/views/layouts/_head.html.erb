@@ -17,3 +17,12 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+      document.addEventListener('turbo:load', function() {
+        lucide.createIcons();
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        lucide.createIcons();
+      });
+    </script>
