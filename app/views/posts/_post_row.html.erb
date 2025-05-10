@@ -1,0 +1,15 @@
+<div id="<%= dom_id post %>" class="grid grid-cols-12 gap-4 border-l-2 border-dashed border-slate-300  pb-12">
+  <div class="flex gap-2 col-span-12 md:col-span-2 text-sm  relative top-2  pl-4">
+    <i data-lucide="dot" class="w-16 h-16 absolute -top-[22px] -left-[33px]"></i>
+    <i data-lucide="calendar" class="w-4 h-4 relative top-[2px]"></i>
+    <%= post.created_at.strftime("%B %d, %Y") %>
+  </div>
+  <div class="col-span-12 md:col-span-6 pl-4 md:pl-0">
+    <h2 class="text-2xl font-bold"><%= link_to post.title, post %></h2>
+    <p class="line-clamp-3 mb-4"><%= post.content.to_plain_text.truncate(220) %></p>
+    <%= link_to post, class: "text-xs flex gap-2 items-center" do %>
+      READ
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    <% end %>
+  </div>
+</div>
