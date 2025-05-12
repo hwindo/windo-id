@@ -1,0 +1,9 @@
+<% if local_assigns[:method].present? %>
+  <%= button_to path, method: method, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-#{local_assigns[:color] || 'blue'}-600 hover:bg-#{local_assigns[:color] || 'blue'}-500 font-medium cursor-pointer", data: local_assigns[:data] do %>
+    <i data-lucide="<%= icon %>" class="w-5 h-5"></i>
+  <% end %>
+<% else %>
+  <%= link_to path, class: "rounded-md p-2 border hover:text-white hover:bg-#{local_assigns[:color] || 'blue'}-600 block" do %>
+    <i data-lucide="<%= icon%>" class="w-5 h-5 font-bold"></i>
+  <% end %>
+<% end %>

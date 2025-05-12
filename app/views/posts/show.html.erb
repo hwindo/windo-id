@@ -1,25 +1,14 @@
 <% content_for :title, "Showing post" %>
-
 <div class="md:w-2/3 w-full mx-auto">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
-
   <div class="flex justify-between items-center">
-      <%= link_to posts_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium flex items-center gap-2" do %>
-        <i data-lucide="arrow-left" class="w-5 h-5"></i>
-      <% end %>
+    <%= render partial: "icon_button", locals: { path: posts_path, icon: "arrow-left" } %>
     <div class="flex items-center">
-      <%= link_to edit_post_path(@post), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-cyan-100 inline-block font-medium cursor-pointer" do %>
-        <i data-lucide="pencil" class="w-5 h-5"></i>
-      <% end %>
-      <%= button_to @post, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } do %>
-        <i data-lucide="trash-2" class="w-5 h-5"></i>
-      <% end %>
+      <%= render partial: "icon_button", locals: { path: edit_post_path(@post), icon: "pencil" } %>
+      <%= render partial: "icon_button", locals: { path: @post, icon: "trash-2", method: :delete, color: "red", data: { turbo_confirm: "Are you sure?"} } %>
     </div>
   </div>
-
   <%= render @post %>
-
-  
 </div>

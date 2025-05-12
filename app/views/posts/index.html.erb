@@ -6,9 +6,7 @@
   <div class="flex justify-between items-center mb-8">
     <h1 class="font-bold text-4xl">Blog</h1>
     <% if authenticated? %>
-      <%= link_to new_post_path, class: "rounded-md p-2 border hover:text-white hover:bg-blue-600 hover:bg-blue-500 block" do %>
-        <i data-lucide="plus" class="w-5 h-5 font-bold"></i>
-      <% end %>
+      <%= render partial: "icon_button", locals: { path: new_post_path, icon: "plus" } %>
     <% end %>
   </div>
   <div id="posts" class="min-w-full ">
