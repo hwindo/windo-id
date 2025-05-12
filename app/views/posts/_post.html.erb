@@ -1,20 +1,14 @@
 <div id="<%= dom_id post %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <h1 class="text-4xl">
+  <div class="flex flex-col justify-between items-center">
+    <h1 class="text-4xl font-bold">
       <%= post.title %>
     </h1>
-    <div>
-      <%= post.user.email_address %>
-    </div>
     <div>
       <%= post.created_at.strftime("%B %d, %Y") %>
     </div>
   </div>
-
   <%= image_tag post.featured_image if post.featured_image.attached? %>
-  
   <div class="prose">
     <%= post.content %>
   </div>
-
 </div>
