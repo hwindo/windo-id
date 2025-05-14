@@ -10,8 +10,8 @@
     </div>
   <% end %>
   <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: ["block px-3 py-2 mt-2 w-full text-4xl font-bold border-0", {"border-gray-400 focus:outline-blue-600": post.errors[:title].none?, "border-red-400 focus:outline-red-600": post.errors[:title].any?}] %>
+    <%# <%= form.label :title %>
+    <%= form.text_area :title, placeholder: "Post Title", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full text-4xl font-bold", {"border-gray-400 focus:outline-blue-600 text-center": post.errors[:title].none?, "border-red-400 focus:outline-red-600": post.errors[:title].any?}] %>
   </div>
   <div class="my-5">
     <%= form.label :featured_image %>
