@@ -6,7 +6,7 @@
   <div class="flex justify-between items-center mb-8">
     <h1 class="font-bold text-4xl">Blog</h1>
     <% if authenticated? %>
-      <%= render partial: "icon_button", locals: { path: new_post_path, icon: "plus" } %>
+      <%= render partial: "icon_button", locals: { path: new_post_path, icon: "plus", color: "green" } %>
     <% end %>
   </div>
   <div id="posts" class="min-w-full ">
