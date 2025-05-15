@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Lora:wght@400;700&display=swap");
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
 @theme {
   --font-fira-sans: "Fira Sans", sans-serif;
   --font-lora: "Lora", serif;
