@@ -1,8 +1,27 @@
-<div id="<%= dom_id post %>" class="grid grid-cols-12 gap-4 border-l-2 border-dashed border-slate-300  pb-12">
-  <div class="flex gap-2 col-span-12 md:col-span-3 text-sm  relative top-2  pl-4">
+<div
+  id="<%= dom_id post %>"
+  class="
+    grid grid-cols-12 gap-4 border-l-2 border-dashed border-slate-300 pb-12
+  "
+>
+  <div class="flex gap-2 col-span-12 md:col-span-3 text-sm relative top-2 pl-4">
     <i data-lucide="dot" class="w-16 h-16 absolute -top-[22px] -left-[33px]"></i>
-    <i data-lucide="calendar" class="w-4 h-4 relative top-[2px]"></i>
-    <%= post.created_at.strftime("%B %d, %Y") %>
+    <div class="flex gap-2 items-center">
+      <i data-lucide="calendar" class="w-4 h-4 relative -top-[1px]"></i>
+
+      <%= post.created_at.strftime("%B %d, %Y") %>
+
+      <% if post.status != 1 %>
+        <span
+          class="
+            text-xs bg-slate-200 text-slate-500 font-medium rounded-md px-2 py-1 ml-2
+          "
+        >
+          draft
+        </span>
+        <div></div>
+      <% end %>
+    </div>
   </div>
   <div class="col-span-12 md:col-span-9 pl-4 md:pl-0">
     <h2 class="text-2xl font-bold"><%= link_to post.title, post %></h2>
@@ -13,3 +32,4 @@
     <% end %>
   </div>
 </div>
+

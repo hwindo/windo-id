@@ -2,11 +2,18 @@ class PostsController < ApplicationController
   allow_unauthenticated_access only: %i[ index show ]
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[ index show ]
-  before_action :current_user, only: %i[ create update destroy ]
+  before_action :current_user, only: %i[ index create update destroy ]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all
+      .order(created_at: :desc)
+
+    unless authenticated?
+      @posts = @posts.where(status: 1)
+    end
+
+    @posts
   end
 
   # GET /posts/1 or /posts/1.json
