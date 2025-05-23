@@ -23,11 +23,7 @@
   </div>
   <div class="my-5">
     <%= form.label :status %>
-    <%= form.number_field :status, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": post.errors[:status].none?, "border-red-400 focus:outline-red-600": post.errors[:status].any?}] %>
-  </div>
-  <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": post.errors[:user_id].none?, "border-red-400 focus:outline-red-600": post.errors[:user_id].any?}] %>
+    <%= form.select :status, options_for_select([["Draft", 0], ["Published", 1]], @post.status || 0), {}, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": post.errors[:status].none?, "border-red-400 focus:outline-red-600": post.errors[:status].any?}] %>
   </div>
   <div class="flex items-center justify-end gap-2">
     <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
