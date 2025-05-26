@@ -8,10 +8,8 @@
     <i data-lucide="dot" class="w-16 h-16 absolute -top-[22px] -left-[33px]"></i>
     <div class="flex gap-2 items-center">
       <i data-lucide="calendar" class="w-4 h-4 relative -top-[1px]"></i>
-
       <%= post.created_at.strftime("%B %d, %Y") %>
-
-      <% if post.status != 1 %>
+      <% if post.draft? %>
         <span
           class="
             text-xs bg-slate-200 text-slate-500 font-medium rounded-md px-2 py-1 ml-2
@@ -24,7 +22,7 @@
     </div>
   </div>
   <div class="col-span-12 md:col-span-9 pl-4 md:pl-0">
-    <h2 class="text-2xl font-bold"><%= link_to post.title, post %></h2>
+    <h2 class="text-2xl font-bold"><%= link_to post.title, post %> <%= post.draft? ? "(draft)" : "" %></h2>
     <p class="line-clamp-3 mb-4"><%= post.content.to_plain_text.truncate(220) %></p>
     <%= link_to post, class: "text-xs flex gap-2 items-center" do %>
       READ
@@ -32,4 +30,3 @@
     <% end %>
   </div>
 </div>
-
