@@ -1,14 +1,15 @@
 <header>
   <div class="flex justify-between h-[80px] items-center">
-    <%= render "layouts/logo" %>
+    <div>
+      <h1 class="font-extrabold text-xl glitch-text"><%= link_to "windo.id", root_path %></h1>
+    </div>
     <div>
       <nav>
         <ul class="hidden sm:flex gap-5">
-          <li>Works</li>
-          <li>Case Studies</li>
-          <li><%= link_to "Blog", blog_path %></li>
+          <li class="glitch-text border-b border-transparent hover:border-b-inherit"><%= link_to "Works", works_path %></li>
+          <li class="glitch-text border-b border-transparent hover:border-b-inherit"><%= link_to "Case Studies", case_studies_path %></li>
+          <li class="glitch-text border-b border-transparent hover:border-b-inherit"><%= link_to "Blog", blog_path %></li>
         </ul>
-
         <select name="nav" id="nav" class="sm:hidden cursor-pointer text-center" onchange="if(this.value) window.location.href=this.value;">
           <option class="cursor-pointer" value="">Select</option>
           <option class="cursor-pointer" value="/works">Works</option>
@@ -18,12 +19,57 @@
       </nav>
     </div>
     <div>
-      <%= if authenticated?
-        button_to "Log Out", session_path, method: :delete, class: "cursor-pointer"
-      end %>
-      <%= unless authenticated?
-        link_to "Log In", new_session_path, class: "cursor-pointer"
-      end %>
+      <% if authenticated? %>
+        <%= button_to "Log Out", session_path, method: :delete, class: "cursor-pointer glitch-text" %>
+      <% end %>
+      <% unless authenticated? %>
+        <%= link_to "Log In", new_session_path, class: "cursor-pointer glitch-text" %>
+      <% end %>
     </div>
   </div>
 </header>
+<style>
+  .glitch-text {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .glitch-text:hover {
+    animation: glitch-hover 0.3s forwards;
+  }
+
+  @keyframes glitch-hover {
+    0% {
+      text-shadow:
+        2px 0 #ff0000,
+        -2px 0 #00ff00,
+        4px 0 #0000ff;
+      transform: skew(1deg);
+    }
+    25% {
+      text-shadow:
+        -2px 0 #ff0000,
+        2px 0 #00ff00,
+        -4px 0 #0000ff;
+      transform: skew(-1deg);
+    }
+    50% {
+      text-shadow:
+        3px 0 #ff0000,
+        -3px 0 #00ff00,
+        6px 0 #0000ff;
+      transform: skew(2deg);
+    }
+    75% {
+      text-shadow:
+        -3px 0 #ff0000,
+        3px 0 #00ff00,
+        -6px 0 #0000ff;
+      transform: skew(-2deg);
+    }
+    100% {
+      text-shadow: none;
+      transform: none;
+    }
+  }
+</style>

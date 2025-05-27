@@ -6,9 +6,91 @@
         <div>
           <span class="border px-4 rounded-full py-1">Let's build this together</span>
         </div>
-        <h1 class="font-lora font-bold text-[72px] leading-tight">Digital Product Builder</h1>
+        <h1 class="font-lora font-bold text-[72px] leading-tight glitch-text glitch-loop">Digital Product Builder</h1>
         <p class="font-fira-sans">Embrace AI Era, let's build even more quality digital products.</p>
       </div>
     </div>
   </div>
 </div>
+<style>
+  .glitch-text {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .glitch-text:hover {
+    animation: glitch 0.3s forwards;
+  }
+
+  .glitch-loop {
+    animation: glitch-loop 5s infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow:
+        2px 0 #ff0000,
+        -2px 0 #00ff00,
+        4px 0 #0000ff;
+      transform: skew(1deg);
+    }
+    25% {
+      text-shadow:
+        -2px 0 #ff0000,
+        2px 0 #00ff00,
+        -4px 0 #0000ff;
+      transform: skew(-1deg);
+    }
+    50% {
+      text-shadow:
+        3px 0 #ff0000,
+        -3px 0 #00ff00,
+        6px 0 #0000ff;
+      transform: skew(2deg);
+    }
+    75% {
+      text-shadow:
+        -3px 0 #ff0000,
+        3px 0 #00ff00,
+        -6px 0 #0000ff;
+      transform: skew(-2deg);
+    }
+    100% {
+      text-shadow: none;
+      transform: none;
+    }
+  }
+
+  @keyframes glitch-loop {
+    0% {
+      text-shadow: none;
+      transform: none;
+    }
+    2% {
+      text-shadow:
+        3px 0 #ff0000,
+        -3px 0 #00ff00,
+        6px 0 #0000ff;
+      transform: skew(2deg);
+    }
+    4% {
+      text-shadow:
+        -3px 0 #ff0000,
+        3px 0 #00ff00,
+        -6px 0 #0000ff;
+      transform: skew(-2deg);
+    }
+    6% {
+      text-shadow: none;
+      transform: none;
+    }
+    98% {
+      text-shadow: none;
+      transform: none;
+    }
+    100% {
+      text-shadow: none;
+      transform: none;
+    }
+  }
+</style>
