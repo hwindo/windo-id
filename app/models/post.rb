@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include Taggable
+  
   enum :status, { draft: 0, published: 1 }
 
   belongs_to :user
