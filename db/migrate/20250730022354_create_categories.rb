@@ -5,9 +5,9 @@ class CreateCategories < ActiveRecord::Migration[8.0]
       t.text :description
       t.string :slug, null: false
       t.timestamps
-
-      add_index :categories, :name, unique: true
-      add_index :categories, :slug, unique: true
     end
+
+    add_index :categories, :name, unique: true
+    add_index :categories, :slug, unique: true
   end
 end

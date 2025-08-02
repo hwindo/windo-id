@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   include Taggable
+  include Categorizable
   
   enum :status, { draft: 0, published: 1 }
 
