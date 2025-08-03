@@ -1,11 +1,12 @@
-module Categorizable
+module CategorizableConcern
+  extend ActiveSupport::Concern
 
   included do
     has_many :categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :categorizables
 
-    scope :in_category, ->(category_name) { joins(:categories).where(categories: {name: category_name}) }
-    scope :in_categories, ->(category_names) { joins(:categories).where(categories: {name: category_names}).distinct }
+    scope :in_category, ->(category_name) { joins(:categories).where(categories: { name: category_name }) }
+    scope :in_categories, ->(category_names) { joins(:categories).where(categories: { name: category_names }).distinct }
   end
 
   def category_names
@@ -17,5 +18,4 @@ module Categorizable
       Category.find_or_create_by(name: name.strip)
     end
   end
-
 end

@@ -1,10 +1,11 @@
-module Taggable extend ActiveSupport::Concern
+module TaggableConcern
+  extend ActiveSupport::Concern
 
   included do
     has_many :taggables, as: :taggable, dependent: :destroy
     has_many :tags, through: :taggable
 
-    scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: {name: tag_name }) }
+    scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
     scope :tagged_with_any, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }).distinct }
   end
 
@@ -17,5 +18,5 @@ module Taggable extend ActiveSupport::Concern
       Tag.find_or_create_by(name: name.strip)
     end
   end
-
 end
+
