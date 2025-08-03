@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resources :posts
   get "/blog", to: "posts#index", as: :blog
+
+  resources :tags, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
+  resources :categories, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
+
+  # Filter Routes
+  get "/posts/tagged/:tag", to: "posts#index", as: :posts_tagged
+  get "/posts/categorized/:category", to: "posts#index", as: :posts_categorized
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
