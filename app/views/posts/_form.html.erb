@@ -1,7 +1,11 @@
 <%= form_with(model: post, class: "contents") do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div
+      id="error_explanation"
+      class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3"
+    >
+      <h2><%= pluralize(post.errors.count, "error") %>
+        prohibited this post from being saved:</h2>
       <ul class="list-disc ml-6">
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,21 +15,106 @@
   <% end %>
   <div class="my-5">
     <%# <%= form.label :title %>
-    <%= form.text_area :title, placeholder: "Post Title", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full text-4xl font-bold", {"border-gray-400 focus:outline-blue-600 text-center": post.errors[:title].none?, "border-red-400 focus:outline-red-600": post.errors[:title].any?}] %>
+    <%= form.text_area :title,
+                   placeholder: "Post Title",
+                   class: [
+                     "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full text-4xl font-bold",
+                     {
+                       "border-gray-400 focus:outline-blue-600 text-center":
+                         post.errors[:title].none?,
+                       "border-red-400 focus:outline-red-600":
+                         post.errors[:title].any?,
+                     },
+                   ] %>
   </div>
   <div class="my-5">
     <%= form.label :featured_image %>
-    <%= form.file_field :featured_image, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": post.errors[:featured_image].none?, "border-red-400 focus:outline-red-600": post.errors[:featured_image].any?}] %>
+    <%= form.file_field :featured_image,
+                    class: [
+                      "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                      {
+                        "border-gray-400 focus:outline-blue-600":
+                          post.errors[:featured_image].none?,
+                        "border-red-400 focus:outline-red-600":
+                          post.errors[:featured_image].any?,
+                      },
+                    ] %>
   </div>
   <div class="my-5">
     <%= form.label :content %>
-    <%= form.rich_textarea :content, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": post.errors[:content].none?, "border-red-400 focus:outline-red-600": post.errors[:content].any?}] %>
+    <%= form.rich_textarea :content,
+                       class: [
+                         "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                         {
+                           "border-gray-400 focus:outline-blue-600":
+                             post.errors[:content].none?,
+                           "border-red-400 focus:outline-red-600":
+                             post.errors[:content].any?,
+                         },
+                       ] %>
   </div>
   <div class="my-5">
     <%= form.label :status %>
-    <%= form.select :status, options_for_select([["Draft", "draft"], ["Published", "published"]], post.status || "draft"), {}, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": post.errors[:status].none?, "border-red-400 focus:outline-red-600": post.errors[:status].any?}] %>
+    <%= form.select :status,
+                options_for_select(
+                  [%w[Draft draft], %w[Published published]],
+                  post.status || "draft",
+                ),
+                {},
+                class: [
+                  "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                  {
+                    "border-gray-400 focus:outline-blue-600":
+                      post.errors[:status].none?,
+                    "border-red-400 focus:outline-red-600":
+                      post.errors[:status].any?,
+                  },
+                ] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :tag_names, "Tags" %>
+    <%= form.text_field :tag_names,
+                    value: post.tag_names.join(", "),
+                    placeholder: "Enter tags separated by commas",
+                    class: [
+                      "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                      {
+                        "border-gray-400 focus:outline-blue-600":
+                          post.errors[:tag_names].none?,
+                        "border-red-400 focus:outline-red-600":
+                          post.errors[:tag_names].any?,
+                      },
+                    ] %>
+
+  </div>
+
+  <div class="my-5">
+    <%= form.label :category_names, "Categories" %>
+    <%= form.select :category_names,
+                options_from_collection_for_select(
+                  Category.by_name,
+                  :name,
+                  :name,
+                  post.category_names,
+                ),
+                { include_blank: "Select categories..." },
+                {
+                  multiple: true,
+                  class: [
+                    "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                    {
+                      "border-gray-400 focus:outline-blue-600":
+                        post.errors[:category_names].none?,
+                      "border-red-400 focus:outline-red-600":
+                        post.errors[:category_names].any?,
+                    },
+                  ],
+                } %>
+
   </div>
   <div class="flex items-center justify-end gap-2">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class:
+                  "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

@@ -62,4 +62,5 @@ group :development do
   gem "web-console"
 
   gem "rails_live_reload"
+  gem "ruby-lsp", require: false
 end
