@@ -14,7 +14,7 @@ module TaggableConcern
   end
 
   def tag_names=(names)
-    names = names.is_a?(String) ? names.split(',') : names
+    names = names.is_a?(String) ? names.split(",") : names
     self.tags = names.reject(&:blank?).map do |name|
       Tag.find_or_create_by(name: name.strip)
     end
