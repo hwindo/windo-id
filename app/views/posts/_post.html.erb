@@ -6,6 +6,15 @@
     <div>
       <%= post.created_at.strftime("%B %d, %Y") %>
     </div>
+    <% if post.tag_names.present? %>
+      <div class="flex flex-wrap justify-center gap-2">
+        <% post.tag_names.each do |tag| %>
+          <span class="inline-block bg-blue-100 p-2 px-4 rounded-full text-blue-800 text-sm font-semibold mr-2 py-0.5">
+            <%= tag %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <%= image_tag post.featured_image if post.featured_image.attached? %>
   <div class="prose lg:prose-xl prose-zinc mx-auto">
