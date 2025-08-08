@@ -98,9 +98,11 @@
                   :name,
                   post.category_names,
                 ),
-                { include_blank: "Select categories..." },
+                { include_blank: "Select categories...",
+                  prompt: "Select categories..." },
                 {
                   multiple: true,
+                  size: 5,
                   class: [
                     "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
                     {

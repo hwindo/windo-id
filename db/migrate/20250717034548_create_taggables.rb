@@ -7,7 +7,7 @@ class CreateTaggables < ActiveRecord::Migration[8.0]
     end
 
     add_index :taggables, [ :tag_id, :taggable_type, :taggable_id ],
-      unique: true, 
+      unique: true,
       name: "index_taggable_on_tag_and_taggable"
   end
 end
