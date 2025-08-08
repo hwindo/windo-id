@@ -3,7 +3,7 @@ module TaggableConcern
 
   included do
     has_many :taggables, as: :taggable, dependent: :destroy
-        has_many :tags, through: :taggables
+    has_many :tags, through: :taggables
 
     scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
     scope :tagged_with_any, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }).distinct }
