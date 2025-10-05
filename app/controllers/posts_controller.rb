@@ -73,10 +73,14 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      permitted = params.require(:post).permit(:title, :content, :featured_image, :status, :tag_names, category_names: [])
+      permitted = params.require(:post).permit(:title, :content, :featured_image, :status, :tag_names, :category_names)
 
       if permitted[:tag_names].present?
         permitted[:tag_names] = permitted[:tag_names].split(",").map(&:strip).reject(&:blank?)
+      end
+
+      if permitted[:category_names].present?
+        permitted[:category_names] = permitted[:category_names].split(",").map(&:strip).reject(&:blank?)
       end
 
       permitted
