@@ -6,9 +6,19 @@ if [ -z "${LD_PRELOAD+x}" ]; then
     export LD_PRELOAD
 fi
 
-# If running the rails server then create or migrate existing database
-if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
-  ./bin/rails db:prepare
+# Fix permissions for Railway volume mount (runs as root, then switches to rails user)
+if [ -d "/data/storage" ]; then
+    echo "Fixing /data/storage permissions for rails user..."
+    chown -R rails:rails /data/storage
 fi
 
-exec "${@}"
+# If running the rails server then create or migrate existing database
+if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+  # Run db:prepare as rails user
+  su -c "./bin/rails db:prepare" rails
+  # Execute the command as rails user
+  exec su -s /bin/bash rails -c "exec $*"
+else
+  # For other commands, run as rails user too
+  exec su -s /bin/bash rails -c "exec $*"
+fi

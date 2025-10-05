@@ -61,13 +61,12 @@ COPY --from=build /rails /rails
 # Create volume directory for persistent storage
 RUN mkdir -p /data/storage
 
-# Run and own only the runtime files as a non-root user for security
+# Create rails user but don't switch to it yet (entrypoint will handle permissions then switch)
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp /data/storage
-USER 1000:1000
+    chown -R rails:rails db log storage tmp
 
-# Entrypoint prepares the database.
+# Entrypoint prepares the database and fixes volume permissions
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
