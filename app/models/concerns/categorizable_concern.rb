@@ -14,6 +14,7 @@ module CategorizableConcern
   end
 
   def category_names=(names)
+    names = names.is_a?(String) ? names.split(",") : names
     self.categories = names.reject(&:blank?).map do |name|
       Category.find_or_create_by(name: name.strip)
     end
